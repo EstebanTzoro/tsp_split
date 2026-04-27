@@ -1,0 +1,40 @@
+# Configuración para el experimento de perturbación con búsqueda local
+# Solo utiliza los movimientos M0 (mantener) y M1 (invertir)
+
+modo: perturbacion
+
+# Carpeta con las instancias TSP (si no se especifica, usa el default de tsp/defaults.py)
+# carpeta_entrada: datos/tsp
+
+# Carpeta de salida (si no se especifica, se crea automáticamente en resultados/<nombre_experimento>)
+# carpeta_salida: resultados/perturbacion_m0_m1
+
+# Heurísticas constructivas a probar
+heuristicas:
+  - NNH
+  - INSERCION
+  - RANDOM_KEYS
+
+# Semilla para RANDOM_KEYS (para reproducibilidad)
+seed_randomkeys: 11
+
+# Parámetros de búsqueda local
+max_iter: 300                    # Iteraciones máximas por cada fase de búsqueda local
+tolerancia: 1.0e-9              # Tolerancia para convergencia
+
+# Parámetros específicos de perturbación
+max_iter_perturb: 20            # Número máximo de perturbaciones a aplicar
+n_movimientos_perturb: 5        # Número de movimientos aleatorios por perturbación
+
+# Timeout opcional (en segundos) - comentar o eliminar si no se desea timeout
+timeout: 300
+
+# Configuración de movimientos - SOLO M0 y M1
+configuraciones_movimientos:
+  usar_m1: true     # M1: invertir segmento
+  usar_m2: false    # M2: deshabilitado
+  usar_m3: false    # M3: deshabilitado
+  usar_m4: false    # M4: deshabilitado
+
+# Nota: NO usar "todas" para perturbación, debe especificarse una configuración única
+# correr_todas_configuraciones: false se setea automáticamente cuando se especifica configuraciones_movimientos

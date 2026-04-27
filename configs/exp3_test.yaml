@@ -1,0 +1,18 @@
+# configs/exp3_test.yaml
+modo: paper_brkga
+decoders:
+  - DECODER_SORT
+  - DECODER_SPLIT
+n_semillas: 3
+semilla_inicio: 1
+n_poblacion: 50
+n_generaciones: 30
+pct_elite: 0.25
+pct_mutantes: 0.20
+prob_elite_crossover: 0.70
+configuraciones_movimientos:
+  usar_m1: true
+  usar_m2: true
+  usar_m3: true
+  usar_m4: true
+timeout: 2.0

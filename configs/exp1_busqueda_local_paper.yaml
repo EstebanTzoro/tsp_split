@@ -1,0 +1,36 @@
+# =====================================================================
+# EXPERIMENTO 1 DEL PAPER: Búsqueda Local Comparativa
+# =====================================================================
+# Compara 4 métodos de búsqueda local pura partiendo de la misma
+# solución inicial (por heurística).
+# =====================================================================
+
+modo: paper_busqueda_local
+
+# Carpetas (opcional - si no se especifican, usan defaults)
+# carpeta_entrada: datos/
+# carpeta_salida: resultados/exp1_busqueda_local_paper
+
+# Heurísticas constructivas
+heuristicas:
+  - NNH
+  - INSERCION
+  - RANDOM_KEYS
+
+# Semilla para RANDOM_KEYS (heurística determinística con seed)
+seed_randomkeys: 42
+
+# Métodos a comparar
+metodos:
+  - 2OPT_BEST     # 2-opt Best Improvement
+  - 2OPT_FIRST    # 2-opt First Improvement
+  - SPLIT_M01     # Split con M0+M1 únicamente
+  - SPLIT_FULL    # Split con todos los movimientos M0-M4
+
+# Parámetros de búsqueda local
+max_iter: 100
+tolerancia: 1.0e-9
+
+# Timeout por corrida (en segundos) - útil para Best Improvement con n>500
+# Comentar para correr sin límite de tiempo
+timeout: 10.0

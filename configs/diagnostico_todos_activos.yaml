@@ -1,0 +1,29 @@
+# =============================================================
+# EXPERIMENTO: Diagnóstico de movimientos — todas las instancias
+# Equivalente al experimento_diagnostico_movimientos() del notebook
+# con config M11_M21_M31_M41 (todos los movimientos activos).
+#
+# Qué hace:
+#   Corre el Split DP una sola vez sobre cada instancia .tsp
+#   con M1, M2, M3 y M4 activos. No hay búsqueda local iterativa.
+#   Sirve para ver qué movimientos ganan localmente y cuáles
+#   terminan en la solución final.
+#
+# Cómo correrlo:
+#   python run.py configs/diagnostico_todos_activos.yaml
+#
+# Resultados en:
+#   resultados/diagnostico_todos_activos/diagnostico.xlsx
+# =============================================================
+
+modo: diagnostico
+
+carpeta_salida: "resultados/diagnostico_todos_activos"
+
+configuraciones_movimientos:
+  usar_m1: true
+  usar_m2: true
+  usar_m3: true
+  usar_m4: true
+
+timeout: 480

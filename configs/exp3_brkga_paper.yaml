@@ -1,0 +1,43 @@
+# =====================================================================
+# EXPERIMENTO 3 DEL PAPER: BRKGA puro vs BRKGA + Split
+# =====================================================================
+# Compara dos decoders en un esquema BRKGA:
+#   - DECODER_SORT  : ordena nodos por keys (BRKGA puro)
+#   - DECODER_SPLIT : ordena por keys + aplica Split DP (híbrido)
+#
+# Se ejecuta con n_semillas semillas distintas para evaluar variabilidad.
+# =====================================================================
+
+modo: paper_brkga
+
+# Carpetas (opcional)
+# carpeta_entrada: datos/
+# carpeta_salida: resultados/exp3_brkga_paper
+
+# Decoders a comparar
+decoders:
+  - DECODER_SORT       # BRKGA puro
+  - DECODER_SPLIT      # BRKGA + Split
+
+# Semillas (n_semillas corridas independientes con semillas consecutivas)
+# semillas usadas: [semilla_inicio, semilla_inicio+1, ..., semilla_inicio+n_semillas-1]
+n_semillas: 10
+semilla_inicio: 1
+
+# Parámetros del BRKGA (estándar de la literatura)
+n_poblacion: 100             # tamaño de población
+n_generaciones: 100          # número de generaciones máximo
+pct_elite: 0.25              # 25% de élite
+pct_mutantes: 0.20           # 20% de mutantes nuevos por generación
+prob_elite_crossover: 0.70   # probabilidad de heredar del padre élite (ρ_e)
+
+# Movimientos del Split (solo aplica al DECODER_SPLIT)
+configuraciones_movimientos:
+  usar_m1: true
+  usar_m2: true
+  usar_m3: true
+  usar_m4: true
+
+# Timeout por corrida (una corrida = una instancia × un decoder × una semilla)
+# Comentar para correr sin límite
+timeout: 120.0

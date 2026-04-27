@@ -1,0 +1,20 @@
+# =====================================================================
+# PAPER COMPLETO: Ejecuta los 3 experimentos del paper en cadena
+# =====================================================================
+# Modo maestro que invoca secuencialmente los 3 YAMLs individuales.
+#
+# Uso:
+#     python run.py configs/paper_completo.yaml
+#
+# Equivalente a correr:
+#     python run.py configs/exp1_busqueda_local_paper.yaml
+#     python run.py configs/exp2_ils_paper.yaml
+#     python run.py configs/exp3_brkga_paper.yaml
+# =====================================================================
+
+modo: paper_completo
+
+experimentos:
+  - configs/exp1_busqueda_local_paper.yaml
+  - configs/exp2_ils_paper.yaml
+  - configs/exp3_brkga_paper.yaml

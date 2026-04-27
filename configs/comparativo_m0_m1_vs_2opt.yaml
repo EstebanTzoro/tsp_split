@@ -1,0 +1,33 @@
+# =============================================================
+# EXPERIMENTO: Comparativo Split (solo M0+M1) vs 2-Opt
+# Igual que el comparativo base pero con M2, M3 y M4 desactivados.
+# Útil para aislar el aporte de M1 frente al camino base (M0)
+# y ver si esa configuración mínima compite con 2-Opt.
+#
+# Cómo correrlo:
+#   python run.py configs/comparativo_m0_m1_vs_2opt.yaml
+#
+# Resultados en:
+#   resultados/comparativo_m0_m1_vs_2opt/comparativo.xlsx
+#   resultados/comparativo_m0_m1_vs_2opt/graficos/
+# =============================================================
+
+modo: comparativo
+
+carpeta_salida: "resultados/comparativo_m0_m1_vs_2opt"
+
+heuristicas:
+  - NNH
+  - INSERCION
+  - RANDOM_KEYS
+
+configuraciones_movimientos:
+  usar_m1: true
+  usar_m2: false
+  usar_m3: false
+  usar_m4: false
+
+max_iter: 300
+tolerancia: 1.0e-9
+timeout: 480
+seed_randomkeys: 11

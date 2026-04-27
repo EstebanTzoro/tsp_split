@@ -1,0 +1,47 @@
+# =====================================================================
+# EXPERIMENTO 2 DEL PAPER: Iterated Local Search (ILS)
+# =====================================================================
+# Compara 5 métodos de búsqueda local dentro de un esquema ILS,
+# usando 2 perturbaciones distintas.
+# =====================================================================
+
+modo: paper_ils
+
+# Carpetas (opcional)
+# carpeta_entrada: datos/
+# carpeta_salida: resultados/exp2_ils_paper
+
+# Heurísticas constructivas
+heuristicas:
+  - NNH
+  - INSERCION
+  - RANDOM_KEYS
+
+# Semillas
+seed_randomkeys: 42         # para RANDOM_KEYS (heurística inicial)
+seed_perturbacion: 1234     # para las perturbaciones del ILS
+
+# Métodos de búsqueda local a usar dentro del ILS
+metodos:
+  - 2OPT_BEST
+  - 2OPT_FIRST
+  - SPLIT_M01
+  - SPLIT_FULL
+  - VND
+
+# Perturbaciones a comparar
+perturbaciones:
+  - DOUBLE_BRIDGE       # estándar de la literatura
+  - MULTI_MOVIMIENTO    # nuestra perturbación basada en M1-M4
+
+# Parámetros de búsqueda local (en cada iteración del ILS)
+max_iter: 100
+tolerancia: 1.0e-9
+
+# Parámetros del ILS
+max_perturbaciones: 20         # cuántas perturbaciones aplicar (iteraciones del ILS)
+n_movimientos_perturb: 3       # solo aplica a MULTI_MOVIMIENTO (n_segmentos disjuntos)
+
+# Timeout TOTAL por corrida (en segundos)
+# Una corrida = una instancia × una heurística × un método × una perturbación
+timeout_total: 10.0

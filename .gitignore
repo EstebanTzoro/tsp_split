@@ -1,0 +1,61 @@
+# =====================================================================
+# .gitignore para proyecto TSP Split
+# =====================================================================
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---- Entornos virtuales ----
+venv/
+env/
+.venv/
+.env/
+ENV/
+
+# ---- IDE ----
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# ---- Resultados experimentales ----
+# (No queremos subir GBs de resultados al repo)
+resultados/
+output/
+outputs/
+*.xlsx
+*.png
+*.pdf
+*.svg
+
+# ---- Logs y temporales ----
+*.log
+*.tmp
+*.bak
+.cache/
+
+# ---- Jupyter ----
+.ipynb_checkpoints/
+*.ipynb
+
+# ---- Datos pesados (opcional - decide si quieres subirlos) ----
+# Comentar/descomentar según necesites
+# datos/*.tsp
+# datos/*.tsp.gz
+
+# ---- Archivos del sistema ----
+Thumbs.db
+desktop.ini

@@ -1,0 +1,37 @@
+# =============================================================
+# EXPERIMENTO: Comparativo Split vs 2-Opt
+# Equivalente a experimento_comparativo_split_vs_2opt() del notebook
+# con NNH, INSERCION y RANDOM_KEYS, config M1+M2+M3+M4 activos.
+#
+# Qué hace:
+#   Para cada instancia, construye la misma ruta inicial con cada
+#   heurística y corre Split y 2-Opt por separado. Compara costo
+#   final, gap, tiempo e iteraciones entre ambos métodos.
+#
+# Cómo correrlo:
+#   python run.py configs/comparativo_mov_vs_2opt.yaml
+#
+# Resultados en:
+#   resultados/comparativo_split_vs_2opt/comparativo.xlsx
+#   resultados/comparativo_split_vs_2opt/graficos/
+# =============================================================
+
+modo: comparativo
+
+carpeta_salida: "resultados/comparativo_split_vs_2opt"
+
+heuristicas:
+  - NNH
+  - INSERCION
+  - RANDOM_KEYS
+
+configuraciones_movimientos:
+  usar_m1: true
+  usar_m2: true
+  usar_m3: true
+  usar_m4: true
+
+max_iter: 300
+tolerancia: 1.0e-9
+timeout: 480
+seed_randomkeys: 11
