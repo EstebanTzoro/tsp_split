@@ -33,4 +33,4 @@ tolerancia: 1.0e-9
 
 # Timeout por corrida (en segundos) - útil para Best Improvement con n>500
 # Comentar para correr sin límite de tiempo
-timeout: 10.0
+timeout: 90.0

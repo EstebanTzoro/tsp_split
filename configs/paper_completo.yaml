@@ -1,15 +1,15 @@
 # =====================================================================
-# PAPER COMPLETO: Ejecuta los 3 experimentos del paper en cadena
-# =====================================================================
-# Modo maestro que invoca secuencialmente los 3 YAMLs individuales.
+# PAPER COMPLETO: Ejecuta los 3 experimentos en cadena
+# MacBook Pro i7 2.6GHz · 16 GB RAM · Python 3.12 · single-thread
 #
-# Uso:
-#     python run.py configs/paper_completo.yaml
+# Tiempo total estimado: 7-8 horas
+# Margen de seguridad en 10 h: ~2-3 horas
 #
-# Equivalente a correr:
-#     python run.py configs/exp1_busqueda_local_paper.yaml
-#     python run.py configs/exp2_ils_paper.yaml
-#     python run.py configs/exp3_brkga_paper.yaml
+# Uso recomendado (corre en background y guarda log):
+#   nohup python run.py configs/paper_completo.yaml > log.txt 2>&1 &
+#
+# Para ver progreso en tiempo real:
+#   tail -f log.txt
 # =====================================================================
 
 modo: paper_completo

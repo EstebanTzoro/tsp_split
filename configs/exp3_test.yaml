@@ -1,18 +1,47 @@
-# configs/exp3_test.yaml
+# =====================================================================
+# EXPERIMENTO 3: BRKGA puro vs BRKGA + Split
+# MacBook Pro i7 2.6GHz · 16 GB RAM · Python 3.12 · single-thread
+# Tiempo estimado: ~5-6 h (cuello de botella del paper)
+# =====================================================================
+#
+# NOTA sobre instancias grandes (n > 1000):
+# DECODER_SPLIT es O(n²) por decodificación. Para d1291 y d1655,
+# el BRKGA+Split alcanzará el timeout con pocas generaciones.
+# Esto es un resultado válido: reportar n_generaciones_corridas
+# como métrica de costo computacional del decoder.
+# =====================================================================
+
 modo: paper_brkga
+
+# Decoders a comparar
 decoders:
   - DECODER_SORT
   - DECODER_SPLIT
-n_semillas: 3
+
+# 10 semillas para validez estadística (media ± desv. estándar)
+n_semillas: 10
 semilla_inicio: 1
+
+# Parámetros BRKGA
+# n_poblacion reducido a 50 (estándar: 50-200 en la literatura).
+# Reduce 2x el costo por generación de DECODER_SPLIT sin perder
+# representatividad estadística de la población.
 n_poblacion: 50
-n_generaciones: 30
+n_generaciones: 100
 pct_elite: 0.25
 pct_mutantes: 0.20
 prob_elite_crossover: 0.70
+
+# Movimientos del Split para DECODER_SPLIT
 configuraciones_movimientos:
   usar_m1: true
   usar_m2: true
   usar_m3: true
   usar_m4: true
-timeout: 2.0
+
+# 300 s permite:
+#   n ≤ 500  → 100 generaciones completas
+#   n ~ 600  → ~25-30 generaciones
+#   n ~ 1060 → ~5-8 generaciones (timeout, reportar)
+#   n > 1291 → timeout (reportar como limitación)
+timeout: 450.0

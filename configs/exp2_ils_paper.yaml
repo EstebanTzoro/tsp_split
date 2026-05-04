@@ -1,15 +1,10 @@
 # =====================================================================
-# EXPERIMENTO 2 DEL PAPER: Iterated Local Search (ILS)
-# =====================================================================
-# Compara 5 métodos de búsqueda local dentro de un esquema ILS,
-# usando 2 perturbaciones distintas.
+# EXPERIMENTO 2: Iterated Local Search (ILS) + VND
+# MacBook Pro i7 2.6GHz · 16 GB RAM · Python 3.12 · single-thread
+# Tiempo estimado: ~1.5-2 h
 # =====================================================================
 
 modo: paper_ils
-
-# Carpetas (opcional)
-# carpeta_entrada: datos/
-# carpeta_salida: resultados/exp2_ils_paper
 
 # Heurísticas constructivas
 heuristicas:
@@ -17,11 +12,10 @@ heuristicas:
   - INSERCION
   - RANDOM_KEYS
 
-# Semillas
-seed_randomkeys: 42         # para RANDOM_KEYS (heurística inicial)
-seed_perturbacion: 1234     # para las perturbaciones del ILS
+seed_randomkeys: 42
+seed_perturbacion: 1234
 
-# Métodos de búsqueda local a usar dentro del ILS
+# Métodos de búsqueda local dentro del ILS
 metodos:
   - 2OPT_BEST
   - 2OPT_FIRST
@@ -31,17 +25,18 @@ metodos:
 
 # Perturbaciones a comparar
 perturbaciones:
-  - DOUBLE_BRIDGE       # estándar de la literatura
-  - MULTI_MOVIMIENTO    # nuestra perturbación basada en M1-M4
+  - DOUBLE_BRIDGE
+  - MULTI_MOVIMIENTO
 
-# Parámetros de búsqueda local (en cada iteración del ILS)
-max_iter: 100
+# Parámetros de búsqueda local por iteración del ILS
+max_iter: 200
 tolerancia: 1.0e-9
 
 # Parámetros del ILS
-max_perturbaciones: 20         # cuántas perturbaciones aplicar (iteraciones del ILS)
-n_movimientos_perturb: 3       # solo aplica a MULTI_MOVIMIENTO (n_segmentos disjuntos)
+# 20 perturbaciones es estándar en la literatura para ILS sobre TSP
+max_perturbaciones: 20
+n_movimientos_perturb: 3
 
-# Timeout TOTAL por corrida (en segundos)
-# Una corrida = una instancia × una heurística × un método × una perturbación
-timeout_total: 10.0
+# 30 s garantiza al menos 5-8 ciclos de perturbación en instancias
+# grandes; las pequeñas convergen mucho antes
+timeout_total: 60.0
